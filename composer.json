@@ -1,7 +1,7 @@
 {
     "name": "tomatophp/filament-discord",
     "type": "library",
-    "description": "Send Notification to discord channel webhook using native FilamentPHP Notification Facade class",
+    "description": "Send Notification to discord channel Webhook using native FilamentPHP Notification Facade class",
     "keywords": [
         "php",
         "laravel",

@@ -7,7 +7,7 @@
 [![License](https://poser.pugx.org/tomatophp/filament-discord/license.svg)](https://packagist.org/packages/tomatophp/filament-discord)
 [![Downloads](https://poser.pugx.org/tomatophp/filament-discord/d/total.svg)](https://packagist.org/packages/tomatophp/filament-discord)
 
-Send Notification to discord channel webhook using native FilamentPHP Notification Facade class
+Send Notification to discord channel Webhook using native FilamentPHP Notification Facade class
 
 ## Installation
 
