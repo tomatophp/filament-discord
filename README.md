@@ -11,9 +11,9 @@ Send Notification to discord channel Webhook using native FilamentPHP Notificati
 
 ## Screenshots
 
-![Notification](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/notification.jpg)
-![Error Log](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/error-log.jpg)
-![Error Log Link](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/error-log-link.jpg)
+![Notification](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/notification.png)
+![Error Log](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/error-log.png)
+![Error Log Link](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/error-log-link.png)
 
 ## Installation
 
