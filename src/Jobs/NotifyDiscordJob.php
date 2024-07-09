@@ -27,9 +27,9 @@ class NotifyDiscordJob implements ShouldQueue
     {
         $this->webhook = $arg['webhook'];
         $this->title = $arg['title'];
-        $this->message  = $arg['message'];
-        $this->url  = $arg['url'];
-        $this->image  = $arg['image'];
+        $this->message  = $arg['message']??null;
+        $this->url  = $arg['url']??null;
+        $this->image  = $arg['image']??null;
     }
 
     /**
