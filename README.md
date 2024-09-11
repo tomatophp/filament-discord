@@ -3,7 +3,6 @@
 # Filament Discord Notifications
 
 [![Latest Stable Version](https://poser.pugx.org/tomatophp/filament-discord/version.svg)](https://packagist.org/packages/tomatophp/filament-discord)
-[![PHP Version Require](http://poser.pugx.org/tomatophp/filament-discord/require/php)](https://packagist.org/packages/tomatophp/filament-discord)
 [![License](https://poser.pugx.org/tomatophp/filament-discord/license.svg)](https://packagist.org/packages/tomatophp/filament-discord)
 [![Downloads](https://poser.pugx.org/tomatophp/filament-discord/d/total.svg)](https://packagist.org/packages/tomatophp/filament-discord)
 
@@ -110,26 +109,6 @@ you can publish config file by use this command
 php artisan vendor:publish --tag="filament-discord-config"
 ```
 
-## Support
+## Other Filament Packages
 
-you can join our discord server to get support [TomatoPHP](https://discord.gg/Xqmt35Uh)
-
-## Docs
-
-you can check docs of this package on [Docs](https://docs.tomatophp.com/filament/filament-discord)
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Security
-
-Please see [SECURITY](SECURITY.md) for more information about security.
-
-## Credits
-
-- [Fady Mondy](https://wa.me/+201207860084)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+Checkout our [Awesome TomatoPHP](https://github.com/tomatophp/awesome)
