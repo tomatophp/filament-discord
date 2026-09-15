@@ -3,81 +3,94 @@
 namespace TomatoPHP\FilamentDiscord\Jobs;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
 
 class NotifyDiscordJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public ?string $webhook;
+
     public ?string $title;
+
     public ?string $message;
+
     public ?string $url;
+
     public ?string $image;
+
     /**
-     * Create a new notification instance.
-     *
-     * @return void
+     * @param  array{webhook?: ?string, title?: ?string, message?: ?string, url?: ?string, image?: ?string}  $arg
      */
     public function __construct(array $arg)
     {
-        $this->webhook = $arg['webhook'];
-        $this->title = $arg['title'];
-        $this->message  = $arg['message']??null;
-        $this->url  = $arg['url']??null;
-        $this->image  = $arg['image']??null;
+        $this->webhook = $arg['webhook'] ?? null;
+        $this->title = $arg['title'] ?? null;
+        $this->message = $arg['message'] ?? null;
+        $this->url = $arg['url'] ?? null;
+        $this->image = $arg['image'] ?? null;
+    }
+
+    public function handle(): void
+    {
+        $webhook = $this->webhook ?: config('filament-discord.webhook');
+
+        if (blank($webhook)) {
+            return;
+        }
+
+        Http::post($webhook, $this->payload());
     }
 
     /**
-     * Execute the job.
-     *
-     * @return void
+     * @return array<string, mixed>
      */
-    public function handle(): void
+    public function payload(): array
     {
-        $embeds = [];
-        if($this->message){
-            $embeds = [
+        $embed = [];
+
+        if ($this->message) {
+            $embed = [
                 'title' => $this->title,
                 'description' => $this->message,
             ];
         }
 
-        if($this->url && !$this->message){
-            $embeds = [
+        if ($this->url && ! $this->message) {
+            $embed = [
                 'title' => $this->title,
             ];
         }
 
-        if($this->url){
-            $embeds['url'] = $this->url;
+        if ($this->url) {
+            $embed['url'] = $this->url;
         }
 
-        if($this->image){
-            $embeds['image'] = [
-                'url' => $this->image
+        if ($this->image) {
+            $embed['title'] ??= $this->title;
+            $embed['image'] = [
+                'url' => $this->image,
             ];
         }
 
-
-        if(count($embeds)> 0){
-            $params = [
-                'content' => "@everyone",
+        if (count($embed) > 0) {
+            return [
+                'content' => '@everyone',
                 'embeds' => [
-                    $embeds
-                ]
-            ];
-        }
-        else {
-            $params = [
-                'content' => $this->title,
+                    $embed,
+                ],
             ];
         }
 
-        Http::post($this->webhook ?: config('filament-discord.webhook'), $params)->json();
+        return [
+            'content' => $this->title,
+        ];
     }
 }

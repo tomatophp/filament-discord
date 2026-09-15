@@ -2,28 +2,21 @@
 
 namespace TomatoPHP\FilamentDiscord\Traits;
 
-
 use TomatoPHP\FilamentDiscord\Jobs\NotifyDiscordJob;
 
 trait InteractsWithDiscord
 {
-
     /**
-     * @param string $title
-     * @param string|null $message
-     * @param string|null $url
-     * @param string|null $image
-     * @param string|null $webhook
-     * @return void
+     * Send a message to the model's own Discord webhook (the `webhook` column),
+     * falling back to the given webhook and then to `filament-discord.webhook`.
      */
     public function notifyDiscord(
         string $title,
-        string $message=null,
-        ?string $url=null,
-        ?string $image=null,
-        ?string $webhook=null
-    ): void
-    {
+        ?string $message = null,
+        ?string $url = null,
+        ?string $image = null,
+        ?string $webhook = null
+    ): void {
         dispatch(new NotifyDiscordJob([
             'webhook' => $this->webhook ?: $webhook,
             'title' => $title,

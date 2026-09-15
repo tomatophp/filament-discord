@@ -14,6 +14,15 @@ Send Notification to discord channel Webhook using native FilamentPHP Notificati
 ![Error Log](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/error-log.png)
 ![Error Log Link](https://raw.githubusercontent.com/tomatophp/filament-discord/master/arts/error-log-link.png)
 
+## Requirements
+
+| Package version | Filament | Laravel     | PHP  |
+|-----------------|----------|-------------|------|
+| 5.x             | 5.x      | 12.x, 13.x  | 8.2+ |
+| 1.x             | 3.x      | 10.x, 11.x  | 8.1+ |
+
+The Filament v3 line continues on the [`v3`](https://github.com/tomatophp/filament-discord/tree/v3) branch.
+
 ## Installation
 
 ```bash
@@ -28,6 +37,8 @@ DISCORD_ERROR_WEBHOOK_ACTIVE=
 ```
 
 where `DISCORD_WEBHOOK` the main notification channel webhook and `DISCORD_ERROR_WEBHOOK` is the error logger channel webhook and `DISCORD_ERROR_WEBHOOK_ACTIVE` to be true or false to active and stop logger
+
+When no webhook is configured the messages are skipped, so the package is safe to install before you create the Discord webhooks. Messages are sent from a queued job, so keep a queue worker running (or use the `sync` queue).
 
 ## Using
 
@@ -84,7 +95,6 @@ you can use Discord channel as an error logger to log and followup your error wi
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use ProtoneMedia\Splade\Http\SpladeMiddleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -107,6 +117,12 @@ you can publish config file by use this command
 
 ```bash
 php artisan vendor:publish --tag="filament-discord-config"
+```
+
+## Testing
+
+```bash
+composer test
 ```
 
 ## Other Filament Packages
