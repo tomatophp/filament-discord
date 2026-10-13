@@ -2,6 +2,12 @@
     "name": "tomatophp/filament-discord",
     "type": "library",
     "description": "Send Notification to discord channel Webhook using native FilamentPHP Notification Facade class",
+    "homepage": "https://tomatophp.com/en/plugins/filament-discord",
+    "support": {
+        "issues": "https://github.com/tomatophp/filament-discord/issues",
+        "source": "https://github.com/tomatophp/filament-discord",
+        "docs": "https://tomatophp.com/en/plugins/filament-discord"
+    },
     "keywords": [
         "php",
         "laravel",
